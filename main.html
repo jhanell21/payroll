@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Payroll Main Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+ body{
+   font-family:Arial;
+   text-align:center;
+   margin:0;
+   padding:20px;
+ }
+ .box{
+   background:#c0f8c0;
+   max-width:400px;
+   width:90%;
+   margin:auto;
+   padding:20px;
+   border-radius:8px;
+   box-sizing:border-box;
+   box-shadow:0 4px 10px rgba(0,0,0,0.3);
+ }
+ h2{
+   margin-bottom:20px;
+   text-shadow:1px 1px 2px #fff;
+ }
+ .row{
+   display:flex;
+   align-items:center;
+   justify-content:space-between;
+   margin-bottom:10px;
+ }
+ label{
+   flex:1;
+   text-align:left;
+   font-weight:bold;
+   margin-right:10px;
+ }
+ input{
+   flex:1.5;
+   padding:6px;
+   border:1px solid #888;
+   box-shadow:inset 1px 1px 3px rgba(0,0,0,0.1);
+ }
+ button{
+   margin-top:15px;
+   padding:10px 25px;
+   background-color:green;
+   color:white;
+   border:none;
+   border-radius:5px;
+   cursor:pointer;
+   box-shadow:0 3px 6px rgba(0,0,0,0.2);
+ }
+ button:hover{
+   background:#046804;
+ }
+</style>
+</head>
+<body>
+
+<div class="box">
+ <h2>GRC PAYROLL PROGRAM</h2>
+
+ <div class="row">
+   <label>ID NUMBER</label>
+   <input type="text" id="idNumber">
+ </div>
+
+ <div class="row">
+   <label>LAST NAME</label>
+   <input type="text" id="lastName">
+ </div>
+
+ <div class="row">
+   <label>FIRST NAME</label>
+   <input type="text" id="firstName">
+ </div>
+
+ <div class="row">
+   <label>MIDDLE NAME</label>
+   <input type="text" id="middleName">
+ </div>
+
+ <div class="row">
+   <label>POSITION</label>
+   <input type="text" id="position">
+ </div>
+
+ <div class="row">
+   <label>RATE (per day)</label>
+   <input type="number" id="rate">
+ </div>
+
+ <div class="row">
+   <label>WORK DAYS</label>
+   <input type="number" id="days">
+ </div>
+
+ <button onclick="goDisplay()">SUBMIT</button>
+</div>
+
+<script>
+function goDisplay(){
+   var data = {
+      idNumber : document.getElementById('idNumber').value,
+      lastName : document.getElementById('lastName').value,
+      firstName: document.getElementById('firstName').value,
+      middleName: document.getElementById('middleName').value.trim() || "N/A",
+      position : document.getElementById('position').value,
+      rate     : parseFloat(document.getElementById('rate').value) || 0,
+      days     : parseInt(document.getElementById('days').value) || 0
+   };
+   localStorage.setItem("payroll", JSON.stringify(data));
+   window.location.href = "display.html";
+}
+</script>
+</body>
+</html>
